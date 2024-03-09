@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Retrieve secrets using the GitHub API
+# Retrieve secrets using the GitHub API 
 secrets=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" https://api.github.com/repos/wreyor/test/actions/secrets | jq -r '.secrets[].name')
 
 # Loop through the secrets and store them as environment variables
