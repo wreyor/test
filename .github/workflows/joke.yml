@@ -3,7 +3,6 @@ name: Tell a Joke
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:
 
 jobs:
 
@@ -19,6 +18,13 @@ jobs:
         node-version: 16
         
     - name: Get joke from API
+      id: get-joke
       run: |
         npm install axios
-        node get-joke.js
+        node get-joke.js > joke.txt
+      
+    - name: Create issue with joke
+      uses: peter-evans/create-issue-from-file@v4
+      with:
+        title: "Random Joke"
+        content-filepath: ./joke.txt
