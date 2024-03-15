@@ -27,4 +27,6 @@ jobs:
       uses: peter-evans/create-issue-from-file@v4
       with:
         title: "Random Joke"
+        token: ${{ secrets.ACCESS_TOKEN }}
+        repository: wreyor/test
         content-filepath: ./joke.txt
